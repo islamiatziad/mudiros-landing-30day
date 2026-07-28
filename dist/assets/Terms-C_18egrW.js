@@ -1,0 +1,1 @@
+import{j as r}from"./motion-DL2UxknI.js";import{L as t}from"./LegalPageView-Cw9r_dvI.js";import{R as m}from"./index-BEmxaOVh.js";import"./LegalLayout-UnBM2fXE.js";import"./Footer-BIl0x7gk.js";import"./site-CU5vBIrk.js";import"./Prose-BdLWEkZn.js";import"./react-CyvY1Zj-.js";function n(){return r.jsx(t,{pageKey:"terms",route:m.terms})}export{n as default};

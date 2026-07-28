@@ -1,0 +1,1 @@
+import{j as r}from"./motion-DL2UxknI.js";import{L as o}from"./LegalPageView-Cw9r_dvI.js";import{R as t}from"./index-BEmxaOVh.js";import"./LegalLayout-UnBM2fXE.js";import"./Footer-BIl0x7gk.js";import"./site-CU5vBIrk.js";import"./Prose-BdLWEkZn.js";import"./react-CyvY1Zj-.js";function s(){return r.jsx(o,{pageKey:"refund",route:t.refund})}export{s as default};

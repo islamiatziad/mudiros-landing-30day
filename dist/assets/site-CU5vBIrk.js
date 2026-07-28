@@ -1,0 +1,1 @@
+const p={name:"MudirOS",supportEmail:"support@mudiros.com",securityEmail:"support@mudiros.com",whatsapp:"https://wa.me/212661356073",whatsappDisplay:"+212 661 356073",lastUpdated:"February 2026"};export{p as S};

@@ -1,0 +1,1 @@
+import{j as o}from"./motion-DL2UxknI.js";import{L as r}from"./LegalPageView-Cw9r_dvI.js";import{R as t}from"./index-BEmxaOVh.js";import"./LegalLayout-UnBM2fXE.js";import"./Footer-BIl0x7gk.js";import"./site-CU5vBIrk.js";import"./Prose-BdLWEkZn.js";import"./react-CyvY1Zj-.js";function n(){return o.jsx(r,{pageKey:"cookies",route:t.cookies})}export{n as default};

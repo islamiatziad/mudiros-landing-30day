@@ -1,0 +1,17 @@
+# MudirOS SPA — serve index.html for any unmatched path so client routing works.
+server {
+  listen 80;
+  server_name mudiros.com www.mudiros.com;
+  root /var/www/mudiros/dist;
+  index index.html;
+
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+
+  # Long-cache hashed assets
+  location /assets/ {
+    expires 1y;
+    add_header Cache-Control "public, immutable";
+  }
+}

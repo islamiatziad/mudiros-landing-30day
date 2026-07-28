@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+/* MudirOS design system — same tokens as the brand foundation. */
+@theme {
+  --color-background: #050505;
+  --color-surface: #0d0d0f;
+  --color-surface-raised: #131316;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+
+  --color-primary: #ffffff;
+  --color-secondary: #9b9ba3;
+  --color-muted: #55555e;
+
+  --color-accent: #2e6bff;
+  --color-accent-hover: #4d82ff;
+  --color-accent-soft: rgba(46, 107, 255, 0.12);
+
+  --font-display: "Sora Variable", system-ui, sans-serif;
+  --font-body: "Instrument Sans Variable", system-ui, sans-serif;
+
+  --text-display-xl: clamp(2.75rem, 6vw, 5.25rem);
+  --text-display-lg: clamp(2.125rem, 4.5vw, 3.75rem);
+  --text-display-md: clamp(1.625rem, 3vw, 2.5rem);
+
+  --spacing-section: clamp(6rem, 11vw, 9.5rem);
+
+  /* Consistent elevation + radius scale (one shadow language, one radius rhythm) */
+  --radius-tile: 0.875rem; /* inner elements: icon tiles, small chips */
+  --radius-card: 1.25rem; /* all cards */
+  --radius-panel: 1.5rem; /* large mock panels */
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-lift: 0 12px 32px -8px rgba(0, 0, 0, 0.55);
+  --shadow-panel: 0 32px 64px -16px rgba(0, 0, 0, 0.7);
+  --shadow-accent: 0 8px 32px -4px rgba(46, 107, 255, 0.35);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-background text-primary font-body;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--color-accent); color: #fff; }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+    font-feature-settings: "ss01";
+  }
+  p { text-wrap: pretty; }
+
+  /* Consistent scroll offset so anchor jumps clear the fixed navbar */
+  :target { scroll-margin-top: 6rem; }
+}
+
+@layer components {
+  /* One card treatment everywhere: same radius, border, elevation, hover. */
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+  /* Interactive cards share one hover language (used via .card-interactive) */
+  .card-interactive {
+    transition:
+      border-color 0.25s var(--ease, ease),
+      background-color 0.25s var(--ease, ease),
+      box-shadow 0.25s var(--ease, ease),
+      transform 0.25s var(--ease, ease);
+  }
+  .card-interactive:hover {
+    border-color: var(--color-border-strong);
+    background: var(--color-surface-raised);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+@layer components {
+  /* Legal/trust page content rhythm */
+  .legal-prose > section + section {
+    margin-top: 2.5rem;
+  }
+  .legal-prose strong {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+  .legal-prose a:not([class]) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .legal-prose a:not([class]):hover {
+    color: var(--color-accent-hover);
+  }
+}
+
+/* ------------------------------------------------------------------
+   RTL + Arabic typography
+   Arabic uses the system Arabic UI stack for crisp native rendering;
+   Latin keeps Sora/Instrument Sans. Logical properties in components
+   mean most layout mirrors automatically under [dir="rtl"].
+------------------------------------------------------------------- */
+:root {
+  --font-arabic: "SF Arabic", "Geeza Pro", "Noto Naskh Arabic", "Segoe UI",
+    system-ui, sans-serif;
+}
+
+[dir="rtl"] body {
+  font-family: var(--font-arabic);
+}
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4 {
+  font-family: var(--font-arabic);
+  letter-spacing: 0; /* Arabic must not have Latin negative tracking */
+}
+
+/* Mirror the few directional decorations that don't use logical props */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
